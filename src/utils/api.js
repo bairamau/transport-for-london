@@ -8,3 +8,31 @@ export async function fetchData(resource) {
   );
   return response.json();
 }
+
+export async function getStations() {
+  const { stopPoints } = await fetchData("/StopPoint/Mode/tube");
+  return stopPoints.filter(item => item.stopType === "NaptanMetroStation");
+}
+
+// https://api.tfl.gov.uk/bikepoint
+// List all Santander Cycle hire docking stations, including 5 minute real-time bike and docking station status information.
+
+// /Line/Meta/Modes
+// bus
+// cable-car
+// coach
+// cycle
+// cycle-hire
+// dlr
+// interchange-keep-sitting
+// interchange-secure
+// national-rail
+// overground
+// replacement-bus
+// river-bus
+// river-tour
+// taxi
+// tflrail
+// tram
+// tube
+// walking
