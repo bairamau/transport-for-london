@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import { Input, List } from "antd";
 
 export default class Search extends Component {
@@ -14,7 +14,7 @@ export default class Search extends Component {
 
   render() {
     const { inputValue } = this.state;
-    const { stations, history } = this.props;
+    const { stations } = this.props;
     const filtered = stations.filter(station =>
       station.commonName.toLowerCase().includes(inputValue.toLowerCase())
     );
@@ -25,7 +25,9 @@ export default class Search extends Component {
             value={inputValue}
             onChange={this.handleChange}
             enterButton
-            onSearch={() => history.push(`/station/${filtered[0].naptanId}`)}
+            onSearch={() => (
+              <Redirect to={`/station/${filtered[0].naptanId}`} />
+            )}
             placeholder="Station e.g. West Ham, Canning Town"
             size="large"
           />
@@ -37,12 +39,7 @@ export default class Search extends Component {
           dataSource={filtered}
           renderItem={item => (
             <List.Item key={item.naptanId} style={{ paddingLeft: "20px" }}>
-              <Link to={`/station/${item.naptanId}`}>
-                {item.commonName.slice(
-                  0,
-                  item.commonName.indexOf("Underground Station")
-                )}
-              </Link>
+              <Link to={`/station/${item.naptanId}`}>{item.commonName}</Link>
             </List.Item>
           )}
         />
