@@ -1,31 +1,24 @@
 import React, { Component } from "react";
-import { fetchData } from "../utils/api";
-import Loader from './Loader'
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+
+import SearchContainer from "./SearchContainer";
+import Home from "./Home";
+import Nav from "./Nav";
+
 class App extends Component {
-  state = {
-    loading: true,
-    data: []
-  };
-  async componentDidMount() {
-    const data = await fetchData("/StopPoint/Meta/StopTypes");
-    this.setState(() => ({ loading: false, data }));
-  }
   render() {
-    const { data, loading } = this.state;
     return (
-      <div className="app-container">
-        {loading ? (
-          <div className="loader-container">
-            <Loader />
-          </div>
-        ) : (
-          <ul>
-            {data.map(item => (
-              <li key={item}>{item}</li>
-            ))}
-          </ul>
-        )}
-      </div>
+      <Router>
+        <div className="app">
+          <Switch>
+            <Route exact path="/" component={Home} />
+            <Route exact path="/search" component={SearchContainer} />
+            {/* <Route path="/station/:stationNaptanId" component={Station} /> */}
+            <Route render={() => <h1>Not Found</h1>} />
+          </Switch>
+          <Nav />
+        </div>
+      </Router>
     );
   }
 }
