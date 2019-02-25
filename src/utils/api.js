@@ -9,15 +9,11 @@ async function fetchData(resource) {
   return response.json();
 }
 
-export async function getStations() {
+export async function fetchStations() {
   const { stopPoints } = await fetchData("/StopPoint/Mode/tube");
   return stopPoints.filter(item => item.stopType === "NaptanMetroStation");
 }
 
-export async function getAllArrivals(naptanId) {
-  return await fetchData(`/StopPoint/${naptanId}/Arrivals`);
-}
-
-export async function getArrivalsByLine(lineId, naptanId) {
+export async function fetchArrivalsByLine(lineId, naptanId) {
   return await fetchData(`/Line/${lineId}/Arrivals/${naptanId}`);
 }

@@ -20,7 +20,7 @@ code {
 }
 
 ::-webkit-scrollbar-thumb:window-inactive {
-  background: transparent; 
+  background: transparent;
 }
 
 .search {
@@ -54,4 +54,14 @@ code {
 
 .nav {
   align-self: end;
+}
+
+.station {
+  display: grid;
+  grid-template-rows: auto 1fr;
+}
+
+.station__heading {
+  text-align: center;
+  font-weight: 300;
 }

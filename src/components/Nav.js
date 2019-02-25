@@ -13,7 +13,7 @@ const Nav = () => {
           </Link>
         </Menu.Item>
         <Menu.Item key="favourited">
-          <Link to='/favourted'>
+          <Link to='/favourited'>
             <Icon type="star" />
             Favourited
           </Link>
