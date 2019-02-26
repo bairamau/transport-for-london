@@ -1,4 +1,10 @@
+# TFL tube arrivals
+This application allows user to look for closest tube arrivals in London underground
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+UI components: [Ant Design](https://github.com/ant-design/ant-design/).
 
 ## Available Scripts
 
