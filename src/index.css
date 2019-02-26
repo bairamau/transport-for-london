@@ -81,6 +81,7 @@ code {
 .station {
   display: grid;
   grid-template-rows: auto 1fr;
+  overflow-x: hidden;
 }
 
 .station__header {
