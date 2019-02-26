@@ -21,7 +21,7 @@ export default class Station extends Component {
             checkedChildren={<Icon type="delete" theme="filled" />}
           />
         </div>
-        <Collapse accordion>
+        <Collapse className="station__accordion" accordion>
           {Object.entries(arrivals).map(([line, platforms]) => (
             <Panel header={line} key={line}>
               {Object.entries(platforms).map(

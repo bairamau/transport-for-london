@@ -81,7 +81,6 @@ code {
 .station {
   display: grid;
   grid-template-rows: auto 1fr;
-  overflow-x: hidden;
 }
 
 .station__header {
@@ -95,4 +94,8 @@ code {
   margin: 0;
   text-align: center;
   font-weight: 300;
+}
+
+.station_accordion {
+  overflow-x: hidden;
 }
