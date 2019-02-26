@@ -17,12 +17,19 @@ export default class StationContainer extends Component {
       currentStation,
       currentArrivals,
       loadingCurrentStation,
-      loadingCurrentArrivals
+      loadingCurrentArrivals,
+      favouritedStations,
+      toggleFavourite
     } = this.props;
     return loadingCurrentStation || loadingCurrentArrivals ? (
       <Spin className="app__loader" size="large" tip="Loading..." />
     ) : (
-      <Station station={currentStation} arrivals={currentArrivals} />
+      <Station
+        toggleFavourite={toggleFavourite}
+        station={currentStation}
+        arrivals={currentArrivals}
+        isFavourited={favouritedStations.includes(currentStation)}
+      />
     );
   }
 }

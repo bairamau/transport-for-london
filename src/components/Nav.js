@@ -1,24 +1,35 @@
 import React from "react";
-import { Menu, Icon } from "antd";
-import { Link } from "react-router-dom";
+import { Icon } from "antd";
+import { NavLink } from "react-router-dom";
 
 const Nav = () => {
   return (
     <div className="nav">
-      <Menu mode="horizontal" theme="dark">
-        <Menu.Item key="search">
-          <Link to='/search'>
-            <Icon type="search"/>
-            Search
-          </Link>
-        </Menu.Item>
-        <Menu.Item key="favourited">
-          <Link to='/favourited'>
-            <Icon type="star" />
-            Favourited
-          </Link>
-        </Menu.Item>
-      </Menu>
+      <NavLink
+        className="nav__link"
+        activeClassName="nav__link--active"
+        to="/"
+        exact
+      >
+        <Icon type="home" />
+        Home
+      </NavLink>
+      <NavLink
+        className="nav__link"
+        activeClassName="nav__link--active"
+        to="/search"
+      >
+        <Icon type="search" />
+        Search
+      </NavLink>
+      <NavLink
+        className="nav__link"
+        activeClassName="nav__link--active"
+        to="/favourited"
+      >
+        <Icon type="star" />
+        Favourited
+      </NavLink>
     </div>
   );
 };

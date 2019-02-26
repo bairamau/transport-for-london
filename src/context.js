@@ -15,10 +15,23 @@ class Provider extends Component {
     favouritedStations: []
   };
 
-  addFavourite = station => {
-    this.setState(() => ({
-      favouritedStations: [...favouritedStations, station]
-    }));
+  toggleFavourite = station => {
+    this.setState(
+      lastState => {
+        const { favouritedStations } = lastState;
+        if (favouritedStations.includes(station)) {
+          return {
+            favouritedStations: lastState.favouritedStations.filter(
+              item => item !== station
+            )
+          };
+        }
+        return {
+          favouritedStations: [...lastState.favouritedStations, station]
+        };
+      },
+      () => console.log("toggled", station.commonName)
+    );
   };
 
   resetCurrent = () => {
@@ -100,7 +113,8 @@ class Provider extends Component {
         value={{
           ...this.state,
           setCurrentStation: this.setCurrentStation,
-          resetCurrent: this.resetCurrent
+          resetCurrent: this.resetCurrent,
+          toggleFavourite: this.toggleFavourite
         }}
       >
         {this.props.children}
