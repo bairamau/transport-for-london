@@ -16,32 +16,26 @@ class Provider extends Component {
   };
 
   toggleFavourite = station => {
-    this.setState(
-      lastState => {
-        const { favouritedStations } = lastState;
-        if (favouritedStations.includes(station)) {
-          return {
-            favouritedStations: lastState.favouritedStations.filter(
-              item => item !== station
-            )
-          };
-        }
+    this.setState(lastState => {
+      const { favouritedStations } = lastState;
+      if (favouritedStations.includes(station)) {
         return {
-          favouritedStations: [...lastState.favouritedStations, station]
+          favouritedStations: lastState.favouritedStations.filter(
+            item => item !== station
+          )
         };
-      },
-      () => console.log("toggled", station.commonName)
-    );
+      }
+      return {
+        favouritedStations: [...lastState.favouritedStations, station]
+      };
+    });
   };
 
   resetCurrent = () => {
-    this.setState(
-      () => ({
-        loadingCurrentArrivals: true,
-        loadingCurrentStation: true
-      }),
-      () => console.log("resetted")
-    );
+    this.setState(() => ({
+      loadingCurrentArrivals: true,
+      loadingCurrentStation: true
+    }));
   };
 
   async componentWillMount() {
@@ -50,7 +44,6 @@ class Provider extends Component {
   }
 
   setCurrentStation = naptanId => {
-    console.log("setting current station");
     const currentStation = this.getStation(naptanId);
     this.setState(
       () => ({ currentStation, loadingCurrentStation: false }),
@@ -59,7 +52,6 @@ class Provider extends Component {
   };
 
   setCurrentArrivals = () => {
-    console.log("setting arrivals");
     const { currentStation } = this.state;
     this.setArrivalsByLines(
       this.getLineIdentifiers(currentStation),
@@ -91,13 +83,10 @@ class Provider extends Component {
       }, {});
     });
 
-    this.setState(
-      () => ({
-        currentArrivals: arrivalsByLines,
-        loadingCurrentArrivals: false
-      }),
-      () => console.log("arrivals:", this.state.currentArrivals)
-    );
+    this.setState(() => ({
+      currentArrivals: arrivalsByLines,
+      loadingCurrentArrivals: false
+    }));
   };
 
   getStation = naptanId =>
