@@ -36,7 +36,7 @@ export default class Station extends Component {
                           arrival.timeToStation / 60
                         )} min ${arrival.timeToStation % 60} sec`,
                         towards: arrival.towards,
-                        vehicleId: arrival.vehicleId
+                        key: `${arrival.vehicleId}-${arrival.timeToStation}`
                       }))}
                     pagination={false}
                   >
