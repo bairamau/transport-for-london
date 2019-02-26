@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Input, List } from "antd";
+import { Input } from "antd";
 import StationList from "./StationList";
 
 export default class Search extends Component {
