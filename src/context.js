@@ -38,7 +38,7 @@ class Provider extends Component {
     }));
   };
 
-  async componentWillMount() {
+  async componentDidMount() {
     const stations = await fetchStations();
     this.setState(() => ({ stations, loadingStations: false }));
   }
