@@ -3,7 +3,7 @@ import Station from "./Station";
 import { Spin } from "antd";
 
 export default class StationContainer extends Component {
-  componentWillMount() {
+  componentDidMount() {
     const { match, setCurrentStation } = this.props;
     setCurrentStation(match.params.naptanId);
   }
