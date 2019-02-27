@@ -25,7 +25,7 @@ export default class Search extends Component {
             value={inputValue}
             onChange={this.handleChange}
             enterButton
-            onSearch={() => history.push(`/station/${filtered[0].naptanId}`)}
+            onSearch={() => filtered.length && history.push(`/station/${filtered[0].naptanId}`)}
             placeholder="Station e.g. West Ham, Canning Town"
             size="large"
           />
