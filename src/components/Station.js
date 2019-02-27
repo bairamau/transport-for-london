@@ -27,7 +27,7 @@ export default class Station extends Component {
               {Object.entries(platforms).map(
                 ([platform, correspondingArrivals]) => (
                   <Table
-                    rowKey="vehicleId"
+                    rowKey="key"
                     key={platform}
                     dataSource={correspondingArrivals
                       .sort((a, b) => a.timeToStation - b.timeToStation)
