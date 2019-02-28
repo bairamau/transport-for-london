@@ -66,10 +66,11 @@ class Provider extends Component {
       )
     );
 
-    const arrivalsByLines = arrivals.reduce(
-      (accum, array, i) => ({ ...accum, [lineIdentifiers[i]]: array }),
-      {}
-    );
+    const arrivalsByLines = arrivals.reduce((accum, array, i) => {
+      return array.length === 0
+        ? accum
+        : { ...accum, [array[0].lineName]: array };
+    }, {});
 
     Object.keys(arrivalsByLines).forEach(key => {
       arrivalsByLines[key] = arrivalsByLines[key].reduce((accum, arrival) => {
