@@ -66,7 +66,7 @@ class Provider extends Component {
       )
     );
 
-    const arrivalsByLines = arrivals.reduce((accum, array, i) => {
+    const arrivalsByLines = arrivals.reduce((accum, array) => {
       return array.length === 0
         ? accum
         : { ...accum, [array[0].lineName]: array };
